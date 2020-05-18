@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from algorithms.sorting import counting_sort
 
 import numpy as np
@@ -9,7 +8,9 @@ import random
 class ArrayGenerator:
     # generate 10 random arrays with high frequency and low range
     def generate_low_range_high_freq(self):
-        return [np.random.randint(100, 1000, random.randint(1000, 10000)) for _ in range(10)]
+        return [
+            np.random.randint(100, 1000, random.randint(1000, 10000)) for _ in range(10)
+        ]
 
 
 class BasicTestSuite(unittest.TestCase):
@@ -20,6 +21,6 @@ class BasicTestSuite(unittest.TestCase):
             test_case = list(test_case)
             minVal, maxVal = min(test_case), max(test_case)
             sorted_test_case = list(sorted(test_case))
-            
+
             # testing
             self.assertEqual(sorted_test_case, counting_sort(minVal, maxVal, test_case))

@@ -2,3 +2,6 @@ flake8
 numpy
 black
 mypy
+coverage
+setuptools
+pytest

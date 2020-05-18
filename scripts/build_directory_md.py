@@ -1,6 +1,4 @@
-  
 #!/usr/bin/env python3
-
 import os
 from typing import Iterator
 
@@ -9,7 +7,8 @@ URL_BASE = "https://github.com/NLe1/Pyrithms/blob/master"
 
 def good_file_paths(top_dir: str = ".") -> Iterator[str]:
     for dir_path, dir_names, filenames in os.walk(top_dir):
-        dir_names[:] = [d for d in dir_names if d != "scripts" and d[0] not in "._"]
+        dir_names[:] = [d for d in dir_names if d !=
+                        "scripts" and d[0] not in "._"]
         for filename in filenames:
             if filename == "__init__.py":
                 continue
@@ -32,7 +31,7 @@ def print_path(old_path: str, new_path: str) -> str:
 
 def print_directory_md(top_dir: str = ".") -> None:
     old_path = ""
-    for filepath in sorted(good_file_paths()):
+    for filepath in sorted(good_file_paths(top_dir)):
         filepath, filename = os.path.split(filepath)
         if filepath != old_path:
             old_path = print_path(old_path, filepath)
@@ -43,4 +42,5 @@ def print_directory_md(top_dir: str = ".") -> None:
 
 
 if __name__ == "__main__":
-    print_directory_md(".")
+    print_directory_md("./algorithms")
+    print_directory_md("./tests")
