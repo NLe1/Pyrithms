@@ -1,2 +1,4 @@
-nose
-sphinx
+flake8
+numpy
+black
+mypy

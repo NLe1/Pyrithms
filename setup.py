@@ -5,21 +5,20 @@
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
+with open("README.rst") as f:
     readme = f.read()
 
-with open('LICENSE') as f:
+with open("LICENSE") as f:
     license = f.read()
 
 setup(
-    name='sample',
-    version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    name="algorithms",
+    version="0.1.0",
+    description="Learning data structures and algorithms with Python",
     long_description=readme,
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/samplemod',
+    author="Nhan Le",
+    author_email="nhan99dn@gmail.com",
+    url="https://github.com/NLe1/Pyrithms",
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=("tests", "docs")),
 )
-
