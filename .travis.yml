@@ -15,4 +15,4 @@ before_script:
   - pytest --doctest-modules
   - coverage run -m unittest discover
 after_success:
-  - scripts/build_directory_md.py 2>&1 | tee DIRECTORY.md
+  - python scripts/build_directory_md.py 2>&1 | tee DIRECTORY.md
