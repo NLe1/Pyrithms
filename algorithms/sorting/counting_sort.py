@@ -1,25 +1,26 @@
-"""
-Counting sort is a method of sorting in O(n) time and space complexity.
-Although the input array has range <= length array in order to be optimal, and the input min and max has to known before hand.
-
-For example if we have arr = [1,9,4,2,1,6,8,9,3,1,2], minVal = 1, maxVal=9
-Then range is 9 - 1 = 8 and the len(arr) = 11 > range, which is good to use counting sort.
-
-Here the method will sort the array in-place but feel free to re-implement if you make your code functional.
-
-Input:
-- minVal: the minimum value in the arr
-- maxVal: max ...
-- arr: array itself
-
-Output:
-- array that is sorted
-
-#TODO: test instructions
-"""
+from typing import List
 
 
-def counting_sort(minVal, maxVal, arr):
+def counting_sort(arr: List = []) -> List:
+    """
+        Implementation of counting_sort in Python: https://en.wikipedia.org/wiki/Counting_sort
+        :param collection: some mutable ordered collection with heterogeneous
+        comparable items inside
+        :return: the same collection ordered by ascending
+        Examples:
+        >>> counting_sort([0, 5, 3, 2, 2])
+        [0, 2, 2, 3, 5]
+        >>> counting_sort([])
+        []
+        >>> counting_sort([-2, -5, -45])
+        [-45, -5, -2]
+        >>> counting_sort([-1,-1,-1,1,0])
+        [-1, -1, -1, 0, 1]
+    """
+    if not arr:
+        return arr
+    minVal, maxVal = min(arr), max(arr)
+
     # frequency table
     tally = [0] * (maxVal - minVal + 1)
 

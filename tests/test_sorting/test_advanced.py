@@ -17,8 +17,7 @@ class AdvancedTestSuite(unittest.TestCase):
         for test_case in test_cases:
             # setting up
             test_case = list(test_case)
-            minVal, maxVal = min(test_case), max(test_case)
             sorted_test_case = list(sorted(test_case))
 
             # testing
-            self.assertEqual(sorted_test_case, counting_sort(minVal, maxVal, test_case))
+            self.assertEqual(sorted_test_case, counting_sort(test_case))
