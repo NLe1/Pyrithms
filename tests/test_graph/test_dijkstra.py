@@ -3,6 +3,7 @@ from typing import List, Dict
 import random
 import unittest
 import string
+import time
 from collections import deque
 
 
@@ -74,7 +75,16 @@ def brute_force_get_shortest_path(
     return min_cost
 
 
-class BasicTestSuite(unittest.TestCase):
+class TestDijkstra(unittest.TestCase):
+    ### setting up and tear down 
+    def setUp(self):
+        print(f"Running Test Suite: {self.__class__.__name__}")
+        self.start = time.time()
+
+    def tearDown(self):
+        print("Operation timing: {:06.2f} seconds".format(time.time() - self.start))
+
+    ### actual testcases
     def test_shortest_path_undirected_dijkstra(self):
         # generate 10 tests
         for _ in range(10):
