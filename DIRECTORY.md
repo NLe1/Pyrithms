@@ -8,7 +8,7 @@
 
 ## Tests
   * Test Graph
-    * [Test Basic](https://github.com/NLe1/Pyrithms/blob/master/tests/test_graph/test_basic.py)
+    * [Test Dijkstra](https://github.com/NLe1/Pyrithms/blob/master/tests/test_graph/test_dijkstra.py)
+    * [Test Union Find](https://github.com/NLe1/Pyrithms/blob/master/tests/test_graph/test_union_find.py)
   * Test Sorting
-    * [Test Advanced](https://github.com/NLe1/Pyrithms/blob/master/tests/test_sorting/test_advanced.py)
-    * [Test Basic](https://github.com/NLe1/Pyrithms/blob/master/tests/test_sorting/test_basic.py)
+    * [Test Sort](https://github.com/NLe1/Pyrithms/blob/master/tests/test_sorting/test_sort.py)
