@@ -1,1 +1,1 @@
-from .union_find import * 
+from .union_find import *

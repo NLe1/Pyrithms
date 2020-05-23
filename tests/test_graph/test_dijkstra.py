@@ -76,7 +76,7 @@ def brute_force_get_shortest_path(
 
 
 class TestDijkstra(unittest.TestCase):
-    ### setting up and tear down 
+    ### setting up and tear down
     def setUp(self):
         print(f"Running Test Suite: {self.__class__.__name__}")
         self.start = time.time()
