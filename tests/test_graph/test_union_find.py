@@ -19,8 +19,7 @@ class TestUnionFind(unittest.TestCase):
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:06.5f} seconds".format(
-            time.time() - self.start))
+        print("Operation timing: {:06.5f} seconds".format(time.time() - self.start))
 
     # test cases
     def test_union_find_complex(self):

@@ -8,7 +8,7 @@ import time
 
 
 def brute_force_find(arr: List) -> int:
-    max_sum = float('-inf')
+    max_sum = float("-inf")
     sum_from_start = list(accumulate(arr))
     for i, cur_sum in enumerate(sum_from_start):
         max_sum = max(max_sum, cur_sum)
@@ -24,8 +24,7 @@ class TestDijkstra(unittest.TestCase):
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:06.2f} seconds".format(
-            time.time() - self.start))
+        print("Operation timing: {:06.2f} seconds".format(time.time() - self.start))
 
     # actual testcases
     def test_shortest_path_undirected_dijkstra(self):

@@ -1,4 +1,6 @@
-from algorithms.graph.shortest_path_undirected_dijkstra import shortest_path_undirected_dijkstra
+from algorithms.graph.shortest_path_undirected_dijkstra import (
+    shortest_path_undirected_dijkstra,
+)
 from datastructure.graph.undirected_graph_node import UndirectedGraphNode
 from typing import List, Dict
 import random
@@ -10,8 +12,7 @@ from collections import deque
 
 def get_random_word() -> str:
     return "".join(
-        [random.choice(string.ascii_letters + string.digits)
-         for _ in range(10)]
+        [random.choice(string.ascii_letters + string.digits) for _ in range(10)]
     )
 
 
@@ -77,8 +78,7 @@ class TestDijkstra(unittest.TestCase):
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:06.5f} seconds".format(
-            time.time() - self.start))
+        print("Operation timing: {:06.5f} seconds".format(time.time() - self.start))
 
     # actual testcases
     def test_shortest_path_undirected_dijkstra(self):
@@ -93,6 +93,5 @@ class TestDijkstra(unittest.TestCase):
             )
             self.assertEqual(
                 corrected_result,
-                shortest_path_undirected_dijkstra(
-                    test_graph, start_vertex, end_vertex),
+                shortest_path_undirected_dijkstra(test_graph, start_vertex, end_vertex),
             )

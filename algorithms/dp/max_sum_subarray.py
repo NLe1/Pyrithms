@@ -1,4 +1,4 @@
-from typing import (List)
+from typing import List
 
 
 def max_sum_subarray(arr: List) -> int:
@@ -35,14 +35,14 @@ def max_sum_subarray(arr: List) -> int:
 
     def find_max_crossing_subarray(mid: int, low: int, high: int):
         nonlocal arr
-        max_left = float('-inf')
+        max_left = float("-inf")
         cur_sum = 0
         i = mid
         while i >= low:
             cur_sum += arr[i]
             max_left = max(max_left, cur_sum)
             i -= 1
-        max_right = float('-inf')
+        max_right = float("-inf")
         cur_sum = 0
         i = mid + 1
         while i <= high:
@@ -57,6 +57,10 @@ def max_sum_subarray(arr: List) -> int:
             return arr[low]
 
         mid = low + int((high - low) / 2)
-        return max(find_max_subarray(low, mid), find_max_subarray(mid + 1, high), find_max_crossing_subarray(mid, low, high))
+        return max(
+            find_max_subarray(low, mid),
+            find_max_subarray(mid + 1, high),
+            find_max_crossing_subarray(mid, low, high),
+        )
 
     return find_max_subarray(0, len(arr) - 1)
