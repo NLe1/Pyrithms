@@ -5,6 +5,7 @@
     * [Undirected Graph Node](https://github.com/NLe1/Pyrithms/blob/master/algorithms/graph/undirected_graph_node.py)
   * Sorting
     * [Counting Sort](https://github.com/NLe1/Pyrithms/blob/master/algorithms/sorting/counting_sort.py)
+    * [Insertion Sort](https://github.com/NLe1/Pyrithms/blob/master/algorithms/sorting/insertion_sort.py)
 
 ## Tests
   * Test Graph
