@@ -6,7 +6,7 @@ class UndirectedGraphNode:
         A <-> C (cost 1)
         B <-> C (cost 7)
         B <-> D (cost 2)
-  
+
   We will have
   [GraphNode {
     val = 'A'

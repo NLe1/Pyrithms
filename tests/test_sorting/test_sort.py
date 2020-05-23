@@ -1,16 +1,9 @@
 from algorithms.sorting import counting_sort, insertion_sort
-
-import numpy as np
+from tests.util.array_generator import ArrayGenerator
 import unittest
 import random
 from typing import List, Callable, Any
 import time
-
-
-class ArrayGenerator:
-    # generate 10 random arrays of random integers with specified size
-    def generate(self, lo: int = -10000, hi: int = 10000, size: int = 10000) -> List:
-        return [np.random.randint(lo, hi, size)]
 
 
 class TestSort(unittest.TestCase):
@@ -20,7 +13,8 @@ class TestSort(unittest.TestCase):
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:06.2f} seconds".format(time.time() - self.start))
+        print("Operation timing: {:06.5f} seconds".format(
+            time.time() - self.start))
 
     def test_counting_sort(self) -> None:
         generator = ArrayGenerator()

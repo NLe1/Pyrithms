@@ -5,6 +5,8 @@ Wikipedia(https://en.wikipedia.org/wiki/Disjoint-set_data_structure):
 This is implementation of data structures union find based on the Princeton lecture: (https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf)
 """
 # here we can abstract type of each node to be ADT, but for the sake of simplicity, we will assume that each node is integer.
+
+
 class QuickFind:
     """
   Quick Find Union Find:

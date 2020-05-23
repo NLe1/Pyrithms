@@ -4,43 +4,39 @@ from {dir}/{folder} import {filename}
 """
 from typing import Dict, List
 from collections import deque
-from .undirected_graph_node import UndirectedGraphNode
+from datastructure.graph.undirected_graph_node import UndirectedGraphNode
+from heapq import heapify, heappush, heappop
 
 
 def shortest_path_undirected_dijkstra(
-    vertices: List, startNode: UndirectedGraphNode, destNode: UndirectedGraphNode
+    vertices: List, start_node: UndirectedGraphNode, dest_node: UndirectedGraphNode
 ) -> int:
     """
     Explain algorithms or data structures:
 
     - Dijkstra algorithm help find the shortest path from any node to other node in the graph(must be weighted but directed or undirected is fine).
-    - Dijkstra keep track of the "so-far" shortest path from startNode to the currentNode by having designated list or hash table to keep track of the cost and optimize it each time it investigate the next un-visited graph node.
+    - Dijkstra keep track of the "so-far" shortest path from start_node to the currentNode by having designated list or hash table to keep track of the cost and optimize it each time it investigate the next un-visited graph node.
+    - This algorithm will use priority queue to optimize the search for the next lowest node that is not yet visited operation => decrease from  O(n^2) to O(n*logn)
     """
 
-    visited = set()  # keep track of the visited graph node
-    # keep track of the previous node that would yield shortest path at current node
-    previous_vertex = {}
     # keep track of the shortest distance from start node to other nodes
-    shortest_distance = {key: float("inf") for key in vertices}
-    # keep track of the next unvisited node, start with startNode
-    unvisited = deque([startNode])
+    cost = {key: float("inf") for key in vertices}
+    cost[start_node] = 0  # update the distance from start_node to itself
+    seen = set()  # keep track of the visited node
 
-    # The cost of startNode to itself is 0
-    shortest_distance[startNode] = 0
+    def find_next_min_node():
+        nonlocal seen, cost
+        unvisited_nodes = [
+            item for item in cost.items() if item[0] not in seen]
+        return min(unvisited_nodes, key=lambda x: x[1])[0] if unvisited_nodes else None
 
-    while unvisited:
-        currentNode = unvisited.popleft()
-        currentCost = shortest_distance[currentNode]
-        for neighbor, nextCost in currentNode.edges.items():
-            # if this path is better than previous one, update the shortest_distance and previous_vertex
-            if currentCost + nextCost < shortest_distance[neighbor]:
-                shortest_distance[neighbor] = currentCost + nextCost
-                previous_vertex[neighbor] = currentNode
-
-            if neighbor not in visited:
-                # add to the unvisited queue
-                unvisited.append(neighbor)
-
-        visited.add(currentNode)
-
-    return shortest_distance[destNode]
+    while True:
+        current_min_node = find_next_min_node()
+        if not current_min_node:
+            break
+        node_cost = cost[current_min_node]
+        seen.add(current_min_node)
+        for neighbor, neighbor_cost in current_min_node.edges.items():
+            temp_cost = node_cost + neighbor_cost
+            cost[neighbor] = min(temp_cost, cost[neighbor])
+    return cost[dest_node]

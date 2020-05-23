@@ -13,15 +13,16 @@ def find_root(union: QuickUnionSecondImprovement, index: int) -> int:
 
 
 class TestUnionFind(unittest.TestCase):
-    ### setting up and tear down
+    # setting up and tear down
     def setUp(self):
         print(f"Running Test Suite: {self.__class__.__name__}")
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:.2f} seconds".format(time.time() - self.start))
+        print("Operation timing: {:06.5f} seconds".format(
+            time.time() - self.start))
 
-    ### test cases
+    # test cases
     def test_union_find_complex(self):
         self.test_union_find(100, 1000)
 

@@ -1,4 +1,5 @@
-from algorithms.graph import shortest_path_undirected_dijkstra, UndirectedGraphNode
+from algorithms.graph.shortest_path_undirected_dijkstra import shortest_path_undirected_dijkstra
+from datastructure.graph.undirected_graph_node import UndirectedGraphNode
 from typing import List, Dict
 import random
 import unittest
@@ -9,7 +10,8 @@ from collections import deque
 
 def get_random_word() -> str:
     return "".join(
-        [random.choice(string.ascii_letters + string.digits) for _ in range(10)]
+        [random.choice(string.ascii_letters + string.digits)
+         for _ in range(10)]
     )
 
 
@@ -41,17 +43,6 @@ def generate_graph(num_vertices: int = 100) -> List:
     return graph
 
 
-def print_graph(graph: List) -> None:
-    print("START OF NEW GRAPH")
-    print("_----------------------------_")
-    for vertice in graph:
-        print(f"Vertice name: {vertice.val}")
-        print("Edges: ")
-        for edges, cost in vertice.edges.items():
-            print(f"${vertice.val} <-> {edges.val} Cost : {cost}")
-    print("_----------------------------_")
-
-
 def brute_force_get_shortest_path(
     graph: List, start_vertex: UndirectedGraphNode, end_vertex: UndirectedGraphNode
 ) -> int:
@@ -61,35 +52,40 @@ def brute_force_get_shortest_path(
 
     min_cost = float("inf")
     visited = set()
-    unvisited = deque([(start_vertex, 0)])
-    while unvisited:
-        current_vertex, current_cost = unvisited.popleft()
+
+    def dfs(current_vertex, current_cost):
+        nonlocal visited, min_cost
         if current_vertex.val == end_vertex.val:
             min_cost = min(min_cost, current_cost)
-            continue
-        # intentionally not adding end_vertex to the visited
+            return
+        # marked the current_vertex already visited
         visited.add(current_vertex)
-        for neighbor, nextCost in current_vertex.edges.items():
+        for neighbor, neighbor_cost in current_vertex.edges.items():
             if neighbor not in visited:
-                unvisited.append((neighbor, current_cost + nextCost))
+                dfs(neighbor, neighbor_cost + current_cost)
+        # unmarked the current_vertex
+        visited.remove(current_vertex)
+
+    dfs(start_vertex, 0)  # lazy dfs
     return min_cost
 
 
 class TestDijkstra(unittest.TestCase):
-    ### setting up and tear down
+    # setting up and tear down
     def setUp(self):
         print(f"Running Test Suite: {self.__class__.__name__}")
         self.start = time.time()
 
     def tearDown(self):
-        print("Operation timing: {:06.2f} seconds".format(time.time() - self.start))
+        print("Operation timing: {:06.5f} seconds".format(
+            time.time() - self.start))
 
-    ### actual testcases
+    # actual testcases
     def test_shortest_path_undirected_dijkstra(self):
         # generate 10 tests
         for _ in range(10):
-            # setting up
-            test_graph = generate_graph(6)
+            # create a graph with 20 vertices and 40 edges
+            test_graph = generate_graph(20)
             # print_graph(test_graph)
             start_vertex, end_vertex = test_graph[0], test_graph[-1]
             corrected_result = brute_force_get_shortest_path(
@@ -97,5 +93,6 @@ class TestDijkstra(unittest.TestCase):
             )
             self.assertEqual(
                 corrected_result,
-                shortest_path_undirected_dijkstra(test_graph, start_vertex, end_vertex),
+                shortest_path_undirected_dijkstra(
+                    test_graph, start_vertex, end_vertex),
             )
