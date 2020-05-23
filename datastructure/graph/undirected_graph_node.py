@@ -40,7 +40,7 @@ class UndirectedGraphNode:
   """
 
     def __init__(self, val: str):
-        self.edges : Dict[UndirectedGraphNode, list] = {}
+        self.edges: Dict[UndirectedGraphNode, list] = {}
         self.val = val
 
     def add_edge(self, vertice: str, cost: int):
