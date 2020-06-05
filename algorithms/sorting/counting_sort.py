@@ -1,7 +1,7 @@
 from typing import List
 
 
-def counting_sort(arr: List = []) -> List:
+def counting_sort(arr: List = [], exp: int = 1) -> List:
     """
     Input: sequence of number store in array (list): [a1,a2,a3 ,.... an]
     Output: permutation of that array that following the ascending value property: [a1', a2', a3', ... , an']
@@ -10,7 +10,7 @@ def counting_sort(arr: List = []) -> List:
     Property:
     1. The algorithm works well when range (maxVal - minVal) is lower than the length of array
     2. Stable
-    3. Runtime: O(n)
+    3. Runtime: O(n + k)
     4. Space: O(range)
 
     Description:

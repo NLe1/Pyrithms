@@ -6,3 +6,4 @@ coverage
 setuptools
 Random-Word
 pytest
+mypy

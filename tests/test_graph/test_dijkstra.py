@@ -68,7 +68,7 @@ def brute_force_get_shortest_path(
         visited.remove(current_vertex)
 
     dfs(start_vertex, 0)  # lazy dfs
-    return min_cost
+    return int(min_cost)
 
 
 class TestDijkstra(unittest.TestCase):

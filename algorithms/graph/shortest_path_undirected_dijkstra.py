@@ -24,9 +24,11 @@ def shortest_path_undirected_dijkstra(
     cost[start_node] = 0  # update the distance from start_node to itself
     seen = set()  # keep track of the visited node
 
+    # O(n) time
     def find_next_min_node():
         nonlocal seen, cost
-        unvisited_nodes = [item for item in cost.items() if item[0] not in seen]
+        unvisited_nodes = [
+            item for item in cost.items() if item[0] not in seen]
         return min(unvisited_nodes, key=lambda x: x[1])[0] if unvisited_nodes else None
 
     while True:
@@ -38,4 +40,4 @@ def shortest_path_undirected_dijkstra(
         for neighbor, neighbor_cost in current_min_node.edges.items():
             temp_cost = node_cost + neighbor_cost
             cost[neighbor] = min(temp_cost, cost[neighbor])
-    return cost[dest_node]
+    return int(cost[dest_node] if cost[dest_node] != float('inf') else -1)
